@@ -131,4 +131,70 @@ const summedNums = numbers.reduce((accumulator, currentValue) => { return accumu
 console.log(summedNums) //output: 17
 ```
 
+## Объекты 
 
+В JS 7 фундаментальных типов данных: 
+* string
+* number
+* boolean
+* null
+* undefined
+* symbol
+* objects
+
+Для объявления объекта: 
+
+```javascript
+let spaceship = {};
+```
+
+Мы наполняем объект неупорядоченными данными. Эти данные - набор пар ключ-значение. 
+
+```javascript
+let spaceship = {
+    'Fuel Type': diesel,
+    'Color': 'silver'
+};
+```
+
+Классически, атрибуты можно достать через точку.
+
+Еще один способ - через скообки. 
+
+```javascript
+spaceship['Color']
+```
+
+### Методы объектов
+
+Как создать: 
+
+```javascript
+const alienShip = {
+   invade: function () {
+      console.log('Hello! .... ') }};
+```
+
+ES6 версия 
+
+```javascript 
+const alienShip = {
+   invade () {
+      console.log('Hello....')}};
+```
+
+### Вложенные объекты 
+
+Объект может иметь другой объект в качестве свойства.
+
+
+### Looping Through Objects
+
+**for ... in** исполняет данный блок кода для каждого свойства объекта
+
+```javascript
+for (let crewMember in spaceship.crew) {
+   console.log(`%{crewMember}: ${spaceship.crew[crewMember].name`);
+}
+```
+ 
