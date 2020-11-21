@@ -1,4 +1,4 @@
-# Краткая вижимка курса JavaScript с codeacademy. 
+# Краткая выжимка курса JavaScript с codeacademy. 
 
 Пропущены уроки с 1 по 5
 
