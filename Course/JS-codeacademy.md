@@ -197,4 +197,139 @@ for (let crewMember in spaceship.crew) {
    console.log(`%{crewMember}: ${spaceship.crew[crewMember].name`);
 }
 ```
+
+## Advancrd objects
+
+### Ключевое слово this
+
+this - это как self в Python. 
+
+```javascript
+const goat = {
+  dietType: 'herbivore',
+  makeSound() {
+    console.log('baaa');
+  },
+  diet() {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet(); 
+```
+
+Не подойдет в использовании с Arrow Function
+
+### Приватность 
+
+С _ все то же самое, что и в python
+
+### Getters 
+
+Геттер - это метод который получает и возврашает внутренний атрибут объекта.
+
+
+```javascript
+const person = {
+  _firstName: 'John',
+  _lastName: 'Doe',
+  get fullName() {
+    if (this._firstName && this._lastName){
+      return `${this._firstName} ${this._lastName}`;
+    } else {
+      return 'Missing a first name or a last name.';
+    }
+  }
+}
  
+// To call the getter method: 
+person.fullName; // 'John Doe'
+```
+
+* Getters can perform an action on the data when getting a property.
+* Getters can return different values using conditionals.
+* In a getter, we can access the properties of the calling object using this. 
+
+### Setters
+
+Переназначает существующее свойство объекта
+
+```javascript
+const person = {
+  _age: 37,
+  set age(newAge){
+    if (typeof newAge === 'number'){
+      this._age = newAge;
+    } else {
+      console.log('You must assign a number to age');
+    }
+  }
+};
+```
+
+```javascript
+person.age = 40;
+console.log(person._age); // Logs: 40
+person.age = '40'; // Logs: You must assign a number to age
+```
+
+### Factory Functions
+
+Когда мы хотим создать множество похожих объектов 
+
+```javascript
+const monsterFactory = (name, age, energySource, catchPhrase) => {
+  return { 
+    name: name,
+    age: age, 
+    energySource: energySource,
+    scare() {
+      console.log(catchPhrase);
+    } 
+  }
+};
+```
+
+```javascript
+const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');
+ghost.scare(); // 'BOO!'
+```
+
+### Property Value Shorthand
+
+ES6 привнесло новый стандарт в создание пар ключей и значений  (destructuring)
+Если много параметров, проще сделать так
+
+```javascript
+const monsterFactory = (name, age) => {
+  return { 
+    name,
+    age 
+  }
+};
+```
+
+### destructured assignment
+
+```javascript 
+const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania',
+  preferences: {
+    day: 'stay inside',
+    night: 'satisfy appetite'
+  }
+};
+```
+
+
+```javascript
+const residence = vampire.residence; 
+console.log(residence); // Prints 'Transylvania' 
+```
+=
+
+```javascript 
+const { residence } = vampire; 
+console.log(residence); // Prints 'Transylvania'
+```
