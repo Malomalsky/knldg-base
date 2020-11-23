@@ -333,3 +333,94 @@ console.log(residence); // Prints 'Transylvania'
 const { residence } = vampire; 
 console.log(residence); // Prints 'Transylvania'
 ```
+
+## Классы 
+
+```javascript
+class Dog {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+
+  get name() {
+    return this._name;
+  }
+  get behavior() {
+    return this._behavior;
+  }   
+
+  incrementBehavior() {
+    this._behavior ++;
+  }
+}
+```
+
+```javascript
+const halley = new Dog('Halley'); // Create new Dog instance
+console.log(halley.name); // Log the name value saved to halley
+// Output: 'Halley'
+```
+
+### Наследование 
+
+```javascript
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+ 
+  get name() {
+    return this._name;
+  }
+ 
+  get behavior() {
+    return this._behavior;
+  }   
+ 
+  incrementBehavior() {
+    this._behavior++;
+  }
+} 
+```
+
+```javascript
+class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+}
+```
+
+### Static Methods
+
+Иногда нужно, чтобы отдельные методы не были доступны отдельным объектам класса, но могли быть вызваны именно через класс.
+
+```javascript
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+ 
+  static generateName() {
+    const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara'];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+} 
+```
+
+```javascript
+console.log(Animal.generateName()); // returns a name
+```
+
+```javascript
+const tyson = new Animal('Tyson'); 
+tyson.generateName(); // TypeError
+```
+
+
+
