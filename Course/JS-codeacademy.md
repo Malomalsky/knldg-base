@@ -422,5 +422,17 @@ const tyson = new Animal('Tyson');
 tyson.generateName(); // TypeError
 ```
 
+## Совместимость браузеров и транспайлеры
+
+Babel - библиотека для транспиляции (перевода) JS ES6 к JS ES5.
+
+```bash
+npm install babel-cli
+
+npm install babel-preset-env
+
+npm run build
+```
+
 
 
