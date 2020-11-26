@@ -434,5 +434,41 @@ npm install babel-preset-env
 npm run build
 ```
 
+## Модули 
+
+### module.exports
+ 
+ Это для ноды 
+
+ ```javascript
+ let Menu = {};
+Menu.specialty = "Roasted Beet Burger with Mint Sauce";
+ 
+module.exports = Menu; 
+```
+
+### require()
+
+Это импорт 
+
+```javascript 
+const Menu = require('./menu.js');
+ 
+function placeOrder() {
+  console.log('My order is: ' + Menu.specialty);
+}
+ 
+placeOrder();
+```
 
 
+We can also wrap any collection of data and functions in an object, and export the object using module.exports. In menu.js, we could write:
+
+```javascript
+module.exports = {
+  specialty: "Roasted Beet Burger with Mint Sauce",
+  getSpecialty: function() {
+    return this.specialty;
+  } 
+}; 
+```
