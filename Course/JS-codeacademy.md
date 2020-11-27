@@ -472,3 +472,98 @@ module.exports = {
   } 
 }; 
 ```
+
+### export default
+
+Это не про ноду, про ES6 
+
+```javascript
+let Menu = {};
+ 
+export default Menu;
+```
+
+### import 
+
+```javascript 
+import Menu from './menu';
+```
+
+
+### Named Exports
+
+```javascript
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+ 
+export { specialty, isVegetarian };
+```
+
+* Мы не устанавливаем свойства объекту
+
+### Named Imports
+
+```javascript
+import { specialty, isVegetarian } from './menu';
+ 
+console.log(specialty);
+```
+
+
+### Export Named Exports
+
+Также можно указать ключевое слово export отдельно 
+
+```javascript 
+
+export let specialty = '';
+export function isVegetarian() {
+}; 
+function isLowSodium() {
+};
+```
+### Export as
+
+
+```javascript 
+let specialty = '';
+let isVegetarian = function() {
+}; 
+let isLowSodium = function() {
+}; 
+ 
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+```
+
+```javascript 
+import { chefsSpecial, isVeg } from './menu';
+```
+
+**Можно использовать оба варианта импорта и экспорта одновременно**. 
+
+```javascript 
+export let Menu = {};
+ 
+export let specialty = '';
+export let isVegetarian = function() {
+}; 
+export let isLowSodium = function() {
+}; 
+let isGlutenFree = function() {
+};
+ 
+export default isGlutenFree;
+
+
+...
+
+import { specialty, isVegetarian, isLowSodium } from './menu';
+ 
+import GlutenFree from './menu';
+```
+
+
+
