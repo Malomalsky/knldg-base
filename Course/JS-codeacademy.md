@@ -565,5 +565,120 @@ import { specialty, isVegetarian, isLowSodium } from './menu';
 import GlutenFree from './menu';
 ```
 
+### Promise 
 
+Связан с асинхронной опирацией. Три состояния: 
+* Pending
+* Fulfilled
+* Rejected
+
+Создаем новый промис
+
+```javascript
+const executorFunction = (resolve, reject) => { };
+const myFirstPromise = new Promise(executorFunction);
+```
+
+Констуркотор промиса принимает executor. Функция executor принимает два параметра - resolve() и reject(). Эти параметры не задаются программистами. 
+
+* Встроенный resolve() - меняет состояние с **pending** на **fulfilled**
+* Встроенный reject() - меняет сосотояние с **pending** на **rejected**
+
+```javascript
+const executorFunction = (resolve, reject) => {
+  if (someCondition) {
+      resolve('I resolved!');
+  } else {
+      reject('I rejected!'); 
+  }
+}
+const myFirstPromise = new Promise(executorFunction);
+```
+
+
+### The Node setTimeout() Function
+
+Метод из API ноды. Видимо, как time.sleep
+
+```javascript
+const returnPromiseFunction = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(( ) => {resolve('I resolved!')}, 1000);
+  });
+};
+ 
+const prom = returnPromiseFunction();
+```
+
+### then()
+
+У промисов есть метод .then(). С помощью него можно указать, что будет после перехода состояний. 
+Чтобы обработать "успешный" промис, мы вызываем **then()**
+
+```javascript
+let prom = new Promise((resolve, reject) => {
+  let num = Math.random();
+  if (num < .5 ){
+    resolve('Yay!');
+  } else {
+    reject('Ohhh noooo!');
+  }
+});
+ 
+const handleSuccess = (resolvedValue) => {
+  console.log(resolvedValue);
+};
+ 
+const handleFailure = (rejectionReason) => {
+  console.log(rejectionReason);
+};
+ 
+prom.then(handleSuccess, handleFailure);
+```
+
+### Using catch() with Promises
+
+```javascript
+prom
+  .then((resolvedValue) => {
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+  ```
+
+  ### Chaining Multiple Promises
+
+  Процесс связи промисов называется композицией. 
+
+  ```javascript 
+  firstPromiseFunction()
+.then((firstResolveVal) => {
+  return secondPromiseFunction(firstResolveVal);
+})
+.then((secondResolveVal) => {
+  console.log(secondResolveVal);
+});
+```
+
+
+### Using Promise.all()
+
+Это для конкурентности.
+
+Promise.all() accepts an array of promises as its argument and returns a single promise.
+
+```javascript 
+let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+ 
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+  ```
+  
 
